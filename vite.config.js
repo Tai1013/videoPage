@@ -8,7 +8,7 @@ const locals = { name: "My Pug" }
 export default defineConfig({
   plugins: [vue(),pugPlugin(options, locals)],
   build: {
-    outDir: 'dost', // 構建輸出路徑
+    outDir: 'docs', // 構建輸出路徑
     assetsDir: 'assets', //靜態資原始檔夾，和outDir同級
     assetsInlineLimit: 4096, // kb, 小於此值將內聯base64格式
   },
