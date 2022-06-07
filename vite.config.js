@@ -7,9 +7,10 @@ const locals = { name: "My Pug" }
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(),pugPlugin(options, locals)],
+  base: '/docs/',
   build: {
     outDir: 'docs', // 構建輸出路徑
-    assetsDir: 'docs/assets', //靜態資原始檔夾，和outDir同級
+    assetsDir: 'assets', //靜態資原始檔夾，和outDir同級
     assetsInlineLimit: 4096, // kb, 小於此值將內聯base64格式
   },
 })
