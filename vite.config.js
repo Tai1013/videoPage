@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import path from 'path'
+
 // pug
 import pugPlugin from "vite-plugin-pug"
 const options = { pretty: true } // FIXME: pug pretty is deprecated!
@@ -13,4 +15,9 @@ export default defineConfig({
     assetsDir: 'assets', //靜態資原始檔夾，和outDir同級
     assetsInlineLimit: 4096, // kb, 小於此值將內聯base64格式
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  }
 })

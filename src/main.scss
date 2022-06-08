@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    input, button {
+        @apply rounded-none outline-none;
+    }
+}

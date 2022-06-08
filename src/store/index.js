@@ -1,9 +1,11 @@
+import { toRaw } from "vue";
 import { createStore } from 'vuex'
 import axios from "../plugins/axios";
 
 export default createStore({
   state: {
-    videoList: []
+    videoList: [],
+    videoLoveList: []
   },
   actions: {
     GET_VIDEO({ commit }) {
@@ -20,14 +22,41 @@ export default createStore({
       } else {
         commit('SET_VIDEO', JSON.parse(videoLocal))
       }
+    },
+    GET_LOVE_VIDEO({ commit }) {
+      const loveLocal = JSON.parse(localStorage.getItem("loveList"));
+      if (loveLocal) commit('SET_LOVE_LIST', loveLocal)
+    },
+    ADD_LOVE_VIDEO({commit}, videoData) {
+      commit('ADD_LOVE_LIST', videoData)
+    },
+    DEL_LOVE_VIDEO({commit}, videoData) {
+      commit('DEL_LOVE_LIST', videoData)
     }
   },
   mutations: {
     SET_VIDEO(state, obj) {
       state.videoList = obj
     },
+    SET_LOVE_LIST(state, obj) {
+      state.videoLoveList = []
+      state.videoLoveList = obj
+    },
+    ADD_LOVE_LIST(state, obj) {
+      state.videoLoveList.push(obj)
+      localStorage.setItem("loveList", JSON.stringify(state.videoLoveList));
+    },
+    DEL_LOVE_LIST(state, obj) {
+      let data = state.videoLoveList
+      state.videoLoveList = []
+      for (let i = 0; i < data.length; i++) {
+        if (obj.channelTitle != data[i].channelTitle) state.videoLoveList.push(data[i])
+      }
+      localStorage.setItem("loveList", JSON.stringify(state.videoLoveList));
+    }
   },
   getters: {
-    videoList: state => state.videoList
+    videoList: state => state.videoList,
+    videoLoveList: state => state.videoLoveList
   }
 })
