@@ -1,6 +1,6 @@
 <template lang="pug">
 div.flex.flex-wrap(class="sm:py-3 sm:px-1.5")
-    VideoBox(class="w-full sm:w-1/2 sm:px-1.5 md:w-1/3 lg:w-1/4" v-for="(video, index) in toRaw(videoList)" :key="index" :videoData="video")
+    VideoBox(class="w-full sm:w-1/2 sm:px-1.5 md:w-1/3 lg:w-1/4" v-for="(video, index) in toRaw(videoList)" :key="video.snippet.title" :videoData="video")
 </template>
 
 <script setup>

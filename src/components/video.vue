@@ -69,7 +69,7 @@ const updateLoveVideo = () => {
 const loveLocal = JSON.parse(localStorage.getItem("loveList"));
 if (loveLocal) {
     for (let i = 0; i < loveLocal.length; i++) {
-        if (snippet.channelTitle == loveLocal[i].channelTitle) isLove.value = true
+        if (snippet.title == loveLocal[i].title) isLove.value = true
     }
 }
 

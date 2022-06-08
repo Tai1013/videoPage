@@ -11,7 +11,7 @@ export default createStore({
     GET_VIDEO({ commit }) {
       const videoLocal = localStorage.getItem("youtubeList");
       if (!videoLocal) {
-        axios.get("https://www.googleapis.com/youtube/v3/search?part=snippet&q=apple&key=AIzaSyD9nxteEDV5z9kU7PapG2S8G4ORz3fjIzM&type=video&maxResults=20")
+        axios.get("https://www.googleapis.com/youtube/v3/search?part=snippet&q=apple&key={YOUR KEY}&type=video&maxResults=20")
           .then((res) => {
             localStorage.setItem("youtubeList", JSON.stringify(res.data.items));
             commit('SET_VIDEO', res.data.items)

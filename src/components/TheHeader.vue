@@ -11,7 +11,7 @@ header.h-24
                 div.w-6.h-6.rounded-full.text-white.bg-green-900
                     p.flex.justify-center.items-center.h-full.text-xs T
     div.fixed.top-12.z-10.w-full.scrollbar-none.whitespace-nowrap.h-12.overflow-x-auto.overflow-y-hidden.border-b.bg-white(:class="{out:!isHeader}")
-        button.tab-list(v-for="(item, index) in tablist" :key="index" :class="{active:index == 0}") {{ item.name }}
+        button.tab-list(v-for="(item, index) in tablist" :key="item.name" :class="{active:index == 0}") {{ item.name }}
     div.fixed.inset-0.z-20(v-if="isSearch")
         div.absolute.inset-0.-z-10.bg-black.bg-opacity-80(@click="toggleSearch()")
         div.relative.h-12.bg-white.flex
